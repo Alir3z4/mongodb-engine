@@ -171,6 +171,14 @@ class DatabaseIntrospection(NonrelDatabaseIntrospection):
         # Only required for backends that use integer primary keys.
         pass
 
+    def get_table_list(self, cursor):
+        """
+        Returns an unsorted list of names of all tables that exist in the
+        database.
+        """
+        return sorted(cursor.db.database.collection_names())
+
+
 
 class DatabaseWrapper(NonrelDatabaseWrapper):
     """
